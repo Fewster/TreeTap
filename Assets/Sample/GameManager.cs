@@ -4,19 +4,19 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public static class GameManager
+public class GameManager 
 {
-    public static float TreeCount;
-    public static float DonationCount;
+    public float TreeCount;
+    public float DonationCount;
 
-    public static float InfluenceTotal;
+    public float InfluenceTotal;
 
-    public static string counterText;
-    public static string influenceCount;
-    public static string donationCount;
+    public string counterText;
+    public string influenceCount;
+    public string donationCount;
 
     //Each tap a tree is planted
-    public static void IncrementTreeCount()
+    public void IncrementTreeCount()
     {
         if (TapModifier.tapModifier == 0)
         {
@@ -32,7 +32,7 @@ public static class GameManager
     }
 
     //Each tree provides 0.01 influence per min
-    public static void IncrementInfluenceCount()
+    public void IncrementInfluenceCount()
     {
         float donationProvider = 0;
 
@@ -47,12 +47,12 @@ public static class GameManager
     }
 
     //Every 1 influence provides 10 donations
-    public static void IncrementDonationCount()
+    public void IncrementDonationCount()
     {
-        Debug.Log("DonationCount "+DonationCount);
+        Debug.Log("DonationCount "+ DonationCount);
     }
 
-    public static float GetInfluencePerMin()
+    public float GetInfluencePerMin()
     {
         //needs to be calculated per/min
         var num = InfluenceModifier.OnChange_InfluenceModifier();

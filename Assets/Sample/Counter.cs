@@ -8,6 +8,7 @@ public class Counter : MonoBehaviour
 {
     public Button mainButton;
     public GameObject treeObject;
+    private GameManager manager;
 
     [Space]
     public Text treePlantedText;
@@ -17,26 +18,26 @@ public class Counter : MonoBehaviour
     private float time = 0;
     private float influenceCounter;
 
-    public void onTap()
+    public void OnTap()
     {
-        GameManager.IncrementTreeCount();
+        manager.IncrementTreeCount();
 
-        treePlantedText.text = GameManager.TreeCount + " Tree's Planted.";
+        treePlantedText.text = manager.TreeCount + " Tree's Planted.";
     }
 
-    public void onInfluence()
+    public void OnInfluence()
     {
         influenceText.text = influenceCounter + " Influence.";
     }
 
-    public void onDonation()
+    public void OnDonation()
     {
-        donationsText.text = GameManager.DonationCount + " Donations.";
+        donationsText.text = manager.DonationCount + " Donations.";
     }
 
     private void Update()
     {
-        if(GameManager.TreeCount >= 1)
+        if(manager.TreeCount >= 1)
         {
             time += Time.deltaTime;
             var ttl = 10f;
@@ -44,7 +45,7 @@ public class Counter : MonoBehaviour
 
             if (time >= ttl)
             {
-                influenceCounter = GameManager.GetInfluencePerMin();
+                influenceCounter = manager.GetInfluencePerMin();
                 Debug.LogError($"influenceCounter {influenceCounter}");
                 time = 0;
             }

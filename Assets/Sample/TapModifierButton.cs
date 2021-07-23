@@ -17,6 +17,6 @@ public class TapModifierButton : MonoBehaviour
         buttonText.text = (curModifier + 1) + "x Tap";
         tapUIText.text = "+ " + curModifier;
 
-        TapModifier.OnChange_TapModifier(curModifier);
+        var manager = TreeManager.instance;
     }
 }
